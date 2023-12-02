@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    ex01.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amenses- <amenses-@student.42.fr>          +#+  +:+       +#+         #
+#    By: amenses- <amenses-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 15:25:54 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/01 17:35:35 by amenses-         ###   ########.fr        #
+#    Updated: 2023/12/02 12:45:00 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Day 01: Trebuchet?
-# Part 01: Find the first and last numbers in each line and add them together.
+# Part One: Find the first and last numbers in each line and add them together.
 
 with open("input.txt", "r") as f:
     result = 0
