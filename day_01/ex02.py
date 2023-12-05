@@ -6,7 +6,7 @@
 #    By: amenses- <amenses-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 16:06:24 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/01 17:35:38 by amenses-         ###   ########.fr        #
+#    Updated: 2023/12/05 17:45:44 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,5 +34,8 @@ with open("input.txt", "r+") as f:
         last_number = [char for char in line if char.isdigit()][-1]
         result += int(first_number + last_number)
 print(result)
-
+a = []
+a.append(1)
+a.append(2)
+a.insert()
 # SOLUTION: 55343
