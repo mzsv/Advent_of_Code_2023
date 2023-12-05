@@ -6,7 +6,7 @@
 #    By: amenses- <amenses-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/03 13:19:33 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/04 23:05:17 by amenses-         ###   ########.fr        #
+#    Updated: 2023/12/05 02:29:31 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,20 +54,14 @@ for i in range(len(numbers)):
     n = numbers[i]
     nlen = len(n)
     pos = numbers_pos[i]
-    print("----")
-    print(n, "pos:", pos)
     # check up neighbor column
     if pos[0] > 0:
-        # print("up:", np_matrix[pos[0] - 1, pos[1] : pos[1] + nlen])
         if ispart(np_matrix[pos[0] - 1, pos[1] : pos[1] + nlen]):
-            print("is part!")
             result += int(n)
             continue
     # check down neighbor column
     if pos[0] < h - 1:
-        # print("down:", np_matrix[pos[0] + 1, pos[1] : pos[1] + nlen])
         if ispart(np_matrix[pos[0] + 1, pos[1] : pos[1] + nlen]):
-            print("is part!")
             result += int(n)
             continue
     # vertical range
@@ -78,16 +72,12 @@ for i in range(len(numbers)):
         e[1] = 1
     # check left neighbor column        
     if pos[1] > 0:
-        # print("left:", np_matrix[pos[0] - e[0]: pos[0] + e[1] + 1, pos[1] - 1])
         if ispart(np_matrix[pos[0] - e[0]: pos[0] + e[1] + 1, pos[1] - 1]):
-            print("is part!")
             result += int(n)
             continue
     # check right neighbor column
     if pos[1] + nlen < w:
-        # print("right:", np_matrix[pos[0] - e[0]: pos[0] + e[1] + 1, pos[1] + nlen])
         if ispart(np_matrix[pos[0] - e[0]: pos[0] + e[1] + 1, pos[1] + nlen]):
-            print("is part!")
             result += int(n)
             continue
 print(result)
