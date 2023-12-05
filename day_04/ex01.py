@@ -5,20 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amenses- <amenses-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/01 15:25:54 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/02 12:45:00 by amenses-         ###   ########.fr        #
+#    Created: 2023/12/04 23:09:47 by amenses-          #+#    #+#              #
+#    Updated: 2023/12/05 02:16:13 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Day 01: Trebuchet?
-# Part One: Find the first and last numbers in each line and add them together.
+# Day 04: Scratchcards
+# Part One: find the number of cards with winning matches and calculate a score
 
+# get data from file
+winning = []
+numbers = []
 with open("input.txt", "r") as f:
-    result = 0
     for line in f:
-        first_number = [char for char in line if char.isdigit()][0]
-        last_number = [char for char in line if char.isdigit()][-1]
-        result += int(first_number + last_number)
+        row = line.split(":")[1].split("|")
+        winning.append(row[0].split())
+        numbers.append(row[1].split())
+
+# cross check and get result
+result = 0
+for i in range(len(winning)):
+    matches = [n for n in winning[i] if n in numbers[i]]
+    if len(matches):
+        result += pow(2, len(matches) - 1)
 print(result)
 
-# SOLUTION: 54239
+# SOLUTION: 25010

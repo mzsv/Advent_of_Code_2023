@@ -6,12 +6,12 @@
 #    By: amenses- <amenses-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 16:06:24 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/05 17:45:44 by amenses-         ###   ########.fr        #
+#    Updated: 2023/12/05 17:47:45 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Day 01: Trebuchet?
-# Part 02: Same as part 1, now including written digits included ("one", "two", etc.).
+# Part Two: Same as part 1, now including written digits included ("one", "two", etc.).
 
 numbers_dict = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
                 "six": "6", "seven": "7", "eight": "8", "nine": "9"}
