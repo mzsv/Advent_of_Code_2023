@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    ex02_np.py                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amenses- <amenses-@student.42.fr>          +#+  +:+       +#+         #
+#    By: amenses- <amenses-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 19:13:22 by amenses-          #+#    #+#              #
-#    Updated: 2023/12/06 00:38:37 by amenses-         ###   ########.fr        #
+#    Updated: 2023/12/06 12:32:30 by amenses-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import numpy as np
+
+user_input = int(input("Please enter the seed range: "))
 
 with open("input.txt", "r") as f:
     seeds = np.array([int(x) for x in f.readline().split(":")[1].split()])
@@ -51,12 +53,14 @@ def search_location(value):
                 next = True
     return (value)
 
-
 # np.vectorize(search_location)
 # print(min(np.vectorize(search_location)(np.arange(seeds[0], seeds[0] + seeds[1]))))
-print(min(min([search_location(seed) for seed in np.arange(seeds[i], seeds[i] + seeds[i + 1])]) for i in range(0, len(seeds), 2)))
-
-# final = np.array([])
+result = search_location(seeds[0])
 # for i in np.arange(0, len(seeds), 2):
-#    final = np.append(final, np.arange(seeds[i], seeds[i] + seeds[i + 1]))
-# print(final)
+i = user_input
+for seed in np.arange(seeds[i], seeds[i] + seeds[i + 1]):
+    loc = search_location(seed)
+    if loc < result:
+        result = loc
+with open(str(user_input), "w") as f:
+    f.write(str(result))
