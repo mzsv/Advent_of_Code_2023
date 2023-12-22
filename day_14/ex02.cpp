@@ -6,9 +6,11 @@
 /*   By: amenses- <amenses-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:06:54 by amenses-          #+#    #+#             */
-/*   Updated: 2023/12/21 20:22:09 by amenses-         ###   ########.fr       */
+/*   Updated: 2023/12/22 14:50:29 by amenses-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* Day 14 - Part Two*/
 
 #include <iostream>
 #include <fstream>
@@ -161,66 +163,46 @@ bool rollRocksEast(vector<string>& data, int i, int j)
     return rollRocksEast(data, i + 1, j);
 }
 
+bool findSeq(vector<int> const& load, int const& n)
+{
+    for (int i = load.size() - 2 * n; i < load.size() - n; ++i)
+    {
+        if (equal(load.begin() + i, load.begin() + i + n, load.end() - n))
+            return true;
+    }
+    return false;
+}
+
 int main()
 {
-    ifstream        f("test.txt");
+    ifstream        f("input.txt");
     string          l;
     vector<string>  data;
+    vector<int>     load;
+    int             n = 0, i = 0, result = 0;
 
     while(getline(f, l))
         data.emplace_back(l);
     f.close();
-    for (int i = 0; i < 1000000000; ++i)
+    for (; i < 1000000000; ++i)
     {
         rollRocks(data, 0, 0);
         rollRocksWest(data, 0, 0);
         rollRocksSouth(data, data.size() - 1, 0);
         rollRocksEast(data, 0, data[0].length() - 1);
+        load.emplace_back(getLoad(data));
+        if (i > 100)
+        {
+            n = 10;
+            while (n < i / 2 && !findSeq(load, n))
+                ++n;
+            if (n < i / 2)
+                break ;
+        }
     }
-    //print data
-    for (int i = 0; i < data.size(); ++i)
-    {
-        cout << data[i] << endl;
-    }
-    cout << getLoad(data) << endl;
-    // cout << "NORTH" << endl;
-    // rollRocks(data, 0, 0);
-    // cout << getLoad(data) << endl;
-    // //print data
-    // for (int i = 0; i < data.size(); ++i)
-    // {
-    //     cout << data[i] << endl;
-    // }
-    // cout << endl;
-
-    // cout << "WEST" << endl;
-    // rollRocksWest(data, 0, 0);
-    // cout << getLoad(data) << endl;
-    // //print data
-    // for (int i = 0; i < data.size(); ++i)
-    // {
-    //     cout << data[i] << endl;
-    // }
-    // cout << endl;
-    
-    // cout << "SOUTH" << endl;
-    // rollRocksSouth(data, data.size() - 1, 0);
-    // cout << getLoad(data) << endl;
-    // //print data
-    // for (int i = 0; i < data.size(); ++i)
-    // {
-    //     cout << data[i] << endl;
-    // }
-    // cout << endl;
-
-    // cout << "EAST" << endl;
-    // rollRocksEast(data, 0, data[0].length() - 1);
-    // cout << getLoad(data) << endl;
-    // //print data
-    // for (int i = 0; i < data.size(); ++i)
-    // {
-    //     cout << data[i] << endl;
-    // }
-    // cout << endl;
+    result = load[load.size() - n + (1000000000 - i - 2) % n];
+    cout << result << endl;
     return 0;
 }
+
+// SOLUTION: 104671
